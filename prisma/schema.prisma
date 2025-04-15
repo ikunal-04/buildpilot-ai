@@ -63,6 +63,7 @@ model User {
     accounts      Account[]
     sessions      Session[]
     posts         Post[]
+    agents        Agent[]
 }
 
 model VerificationToken {
@@ -71,4 +72,16 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Agent {
+    id          Int       @id @default(autoincrement())
+    name        String
+    status      String    @default("active")
+    workflow    Json      @default("{}")
+    createdBy   User   @relation(fields: [createdById], references: [id])
+    createdById String
+    editedAt    DateTime  @updatedAt
+    lastRunAt   DateTime?
+    createdAt   DateTime  @default(now())
 }
