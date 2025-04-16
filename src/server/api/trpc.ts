@@ -122,6 +122,7 @@ export const protectedProcedure = t.procedure
   .use(timingMiddleware)
   .use(({ ctx, next }) => {
     if (!ctx.session?.user) {
+      console.log("Unauthorized access to protected procedure");
       throw new TRPCError({ code: "UNAUTHORIZED" });
     }
     return next({

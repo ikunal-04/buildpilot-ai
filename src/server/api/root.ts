@@ -2,6 +2,7 @@ import { postRouter } from "@/server/api/routers/post";
 import { createAgent } from "@/server/api/routers/agents/create";
 import { deleteAgents } from "@/server/api/routers/agents/delete";
 import { listAgents } from "@/server/api/routers/agents/list";
+import { showAgent } from "@/server/api/routers/agents/show";
 import { updateAgent } from "@/server/api/routers/agents/update";
 import { createCallerFactory, createTRPCRouter } from "@/server/api/trpc";
 
@@ -15,6 +16,7 @@ export const appRouter = createTRPCRouter({
   createAgent: createAgent,
   deleteAgents: deleteAgents,
   listAgents: listAgents,
+  showAgent: showAgent,
   updateAgent: updateAgent,
 });
 
